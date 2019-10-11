@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="8bc09b68-7864-4e5d-9406-d7678a4e52c4" name="默认" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/QR.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/QR.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Url.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Url.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,7 +71,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1570762952268</updated>
-      <workItem from="1570762953365" duration="10975000" />
+      <workItem from="1570762953365" duration="11531000" />
     </task>
     <servers />
   </component>

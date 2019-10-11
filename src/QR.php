@@ -103,4 +103,16 @@ class QR
         return Curl::get($url);
     }
 
+    /**
+     * 长连接转短连接
+     * @param string $longUrl
+     * @return string
+     * @throws
+     */
+    public function shortURL(string $longUrl): string
+    {
+        $url    = sprintf(Url::URL_TO_SHORT, Token::get());
+        $result = json_decode(Curl::post($url, ['action' => 'long2short', 'long_url' => $longUrl]), true);
+        return $result['short_url'] ?? json_encode($result);
+    }
 }

@@ -83,4 +83,6 @@ class Url
     const QR_CREATE = 'https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=%s';
     // 显示二维码
     const QR_SHOW = 'https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=%s';
+    // 长链接转短连接
+    const URL_TO_SHORT = 'https://api.weixin.qq.com/cgi-bin/shorturl?access_token=%s';
 }
