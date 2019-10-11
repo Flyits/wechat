@@ -19,6 +19,8 @@ class Message implements MessageResponse
     protected $toUserName = '';
     // 发送消息者的openid
     protected $fromUserName = '';
+    // 文本消息的内容
+    protected $content = '';
     // 消息创建时间
     protected $createTime = '';
     // 事件推送的消息类型
@@ -55,6 +57,7 @@ class Message implements MessageResponse
             $this->setData($postObj)
                 ->setToUserName($postObj)
                 ->setFromUserName($postObj)
+                ->setContent($postObj)
                 ->setCreateTime($postObj)
                 ->setMsgType($postObj)
                 ->setEvent($postObj)
@@ -172,6 +175,26 @@ class Message implements MessageResponse
     {
         $this->fromUserName = is_string($fromUserName) ? $fromUserName : ($fromUserName['FromUserName'] ?? '');;
         return $this;
+    }
+
+    /**
+     * 设置接收到的消息
+     * @param mixed $content
+     * @return $this
+     */
+    public function setContent($content): Message
+    {
+        $this->content = is_string($content) ? $content : ($content['Content'] ?? '');
+        return $this;
+    }
+
+    /**
+     * 获取接收到的消息内容
+     * @return string
+     */
+    public function getContent(): string
+    {
+        return $this->content;
     }
 
     /**

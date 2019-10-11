@@ -22,7 +22,8 @@
         "php" :"^7.1.0",
         "topthink/framework": "6.0.*-dev",
         "ext-json": "^1.6",
-        "flyits/tools": "v1.0.1"
+        "flyits/tools": "v1.0.1",
+        "ext-xml": "^7.3"
     },
     "extra": {
         "think":{
