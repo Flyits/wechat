@@ -77,4 +77,10 @@ class Url
     const USER_GET_INFO = 'https://api.weixin.qq.com/sns/userinfo?access_token=%s&openid=%s&lang=zh_CN';
     // 检测网页授权ACCESS_TOKEN是否有效
     const ACCESS_TOKEN_CHECK = 'https://api.weixin.qq.com/sns/auth?access_token=%s&openid=%s';
+
+    // todo 二维码接口
+    // 创建二维码
+    const QR_CREATE = 'https://api.weixin.qq.com/cgi-bin/qrcode/create?access_token=%s';
+    // 显示二维码
+    const QR_SHOW = 'https://mp.weixin.qq.com/cgi-bin/showqrcode?ticket=%s';
 }
