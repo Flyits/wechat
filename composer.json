@@ -1,7 +1,7 @@
 {
-    "name": "flyits/wechat",
+    "name": "flyits/think-wechat",
     "description": "微信公众号sdk",
-    "type": "library",
+    "type": "think-extend",
     "license": "Apache-2.0",
     "authors": [
         {
@@ -20,9 +20,13 @@
     },
     "require": {
         "php" :"^7.1.0",
-        "ext-json": "^1.6"
+        "topthink/framework": "6.0.*-dev",
+        "ext-json": "^1.6",
+        "flyits/tools": "v1.0.1"
     },
     "extra": {
-        "config":"config/wechat.php"
-  }
+        "think-config": {
+            "wechat": "config/wechat.php"
+        }
+    }
 }

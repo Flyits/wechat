@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/flyits/tools" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/guzzlehttp/promises" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/guzzlehttp/psr7" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/league/flysystem" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/opis/closure" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/psr/cache" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/psr/container" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/psr/http-message" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/psr/log" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/psr/simple-cache" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/topthink/framework" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/topthink/think-container" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/vendor/topthink/think-orm" vcs="Git" />
+  </component>
+</project>
