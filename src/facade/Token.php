@@ -9,17 +9,17 @@
 namespace flyits\wechat\facade;
 
 
-use think\facade\Facade;
+use think\Facade;
 
 /**
  * Class Token
  * @package think\facade
  * @mixin
  */
-class AccessToken extends Facade
+class Token extends Facade
 {
-	protected static function getFacadeClass()
-	{
-		return 'Token';
-	}
+    protected static function getFacadeClass()
+    {
+        return 'flyits\wechat\Token';
+    }
 }

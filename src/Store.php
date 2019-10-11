@@ -6,8 +6,9 @@
  * Time: 9:57
  */
 
-namespace flyits\wechat;
+declare(strict_types = 1);
 
+namespace flyits\wechat;
 
 class Store
 {

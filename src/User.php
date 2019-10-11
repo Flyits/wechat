@@ -256,7 +256,7 @@ class User
      */
     public function getUserInfo(string $accessToken, string $openid)
     {
-        $url = sprintf(Url::USER_GET_INFO, Token::get(), $accessToken, $openid);
+        $url = sprintf(Url::USER_GET_INFO, $accessToken, $openid);
         return Curl::get($url);
     }
 

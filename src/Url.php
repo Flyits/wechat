@@ -68,7 +68,7 @@ class Url
     // 取消拉黑用户
     const BLACK_BATCH_DEL = 'https://api.weixin.qq.com/cgi-bin/tags/members/batchunblacklist?access_token=%s';
     // 用户授权
-    const USER_AUTH = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=%s&response_type=code&scope=%s&state=%s#wechat_redirect';
+    const USER_AUTH = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=%s&redirect_uri=%s&response_type=code&scope=%s&state=%s#wechat_redirect';
     // 通过code换取网页授权access_token
     const AUTH_ACCESS_TOKEN = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=%s&secret=%s&code=%s&grant_type=authorization_code';
     // 刷新网页授权access_token

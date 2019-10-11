@@ -35,7 +35,7 @@ class Token
     protected static $instance;
 
     /**
-     * AccessToken
+     * Token
      * @var string
      */
     protected $token = '';
@@ -87,7 +87,7 @@ class Token
             $response = json_decode($response, true);
             if (array_key_exists('access_token', $response)) {
                 $this->token  = $response['access_token'];
-                $this->expireTime = $_SERVER['REQUEST_TIME'] + $response['expire_in'] - 10;
+                $this->expireTime = $_SERVER['REQUEST_TIME'] + $response['expires_in'] - 10;
                 Cache::set('wechat_token', $this->token, $this->expireTime);
             } else {
                 $this->setErr($response);

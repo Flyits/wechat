@@ -6,6 +6,8 @@
  * Time: 9:50
  */
 
+declare(strict_types = 1);
+
 namespace flyits\wechat;
 
 
