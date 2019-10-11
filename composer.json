@@ -25,9 +25,9 @@
         "flyits/tools": "v1.0.1"
     },
     "extra": {
-        "think": {
-            "config": {
-                "wechat":"config/wechat.php"
+        "think":{
+            "config":{
+                "wechat": "config/config.php"
             }
         }
     }
