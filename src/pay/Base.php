@@ -75,7 +75,7 @@ class Base
      */
     public function __construct()
     {
-        $this->setConfig(Config::get('wechat_pay'));
+        $this->setConfig(Config::get('wechat.pay'));
         return $this;
     }
 
@@ -245,7 +245,6 @@ class Base
     {
         return $this->request;
     }
-
 
 
     public function post($url, $rawData, $useCert = true)

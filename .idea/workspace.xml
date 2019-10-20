@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8bc09b68-7864-4e5d-9406-d7678a4e52c4" name="默认" comment="">
-      <change afterPath="$PROJECT_DIR$/config/wechat_pay.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pay/Base.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pay/UnifiedOrder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/QR.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/QR.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Url.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Url.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -85,7 +77,7 @@
       <workItem from="1570926663040" duration="1213000" />
       <workItem from="1571013620734" duration="626000" />
       <workItem from="1571462828617" duration="10724000" />
-      <workItem from="1571534890108" duration="661000" />
+      <workItem from="1571534890108" duration="3170000" />
     </task>
     <servers />
   </component>
