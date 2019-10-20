@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "37ee2c886a2ba84bdb7beb16a70522bd",
+    "content-hash": "fda94dc5b13f71159e0bff7857f389b7",
     "packages": [
         {
             "name": "flyits/tools",
@@ -650,7 +650,8 @@
     "platform": {
         "php": "^7.1.0",
         "ext-json": "^1.6",
-        "ext-xml": "^7.3"
+        "ext-xml": "^7.3",
+        "ext-curl": "^7.3"
     },
     "platform-dev": []
 }

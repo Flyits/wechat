@@ -23,7 +23,8 @@
         "topthink/framework": "6.0.*-dev",
         "ext-json": "^1.6",
         "flyits/tools": "v1.0.1",
-        "ext-xml": "^7.3"
+        "ext-xml": "^7.3",
+        "ext-curl": "^7.3"
     },
     "extra": {
         "think":{

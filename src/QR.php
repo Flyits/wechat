@@ -67,10 +67,10 @@ class QR
      * @param int|string $value
      * @param int $expire 最大2592000
      * @param string $type QR_SCENE为临时的整型参数值，QR_STR_SCENE为临时的字符串参数值，QR_LIMIT_SCENE为永久的整型参数值，QR_LIMIT_STR_SCENE为永久的字符串参数值
-     * @return mixed
+     * @return array
      * @throws
      */
-    public function create($value, string $type = null, int $expire = null)
+    public function create($value, string $type = null, int $expire = null): array
     {
         $qrBody = [
             "expire_seconds" => $expire ?: $this->expireSeconds,
