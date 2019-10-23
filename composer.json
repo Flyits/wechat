@@ -24,7 +24,10 @@
         "ext-json": "^1.6",
         "flyits/tools": "v1.0.1",
         "ext-xml": "^7.3",
-        "ext-curl": "^7.3"
+        "ext-curl": "^7.3",
+        "ext-SimpleXML": "^7.3",
+        "ext-libxml": "^7.3",
+        "ext-openssl": "^7.3"
     },
     "extra": {
         "think":{

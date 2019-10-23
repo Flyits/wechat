@@ -21,6 +21,12 @@ class Base
     protected $config = [];
 
     /**
+     * 可设默认值
+     * @var array
+     */
+    protected $default = [];
+
+    /**
      * 请求数据
      * @var array
      */
@@ -86,14 +92,25 @@ class Base
      */
     public function setConfig(array $config): self
     {
-        $setup = ['appid', 'mch_id', 'sign_type', 'key'];
+        $setup = ['appid', 'mch_id', 'sign_type', 'key', 'notify_url', 'expire'];
         foreach ($config as $index => $item) {
             if (in_array($index, $setup)) {
                 $this->config[$index] = $item;
             }
         }
-        $this->setRequest($this->config);
         return $this;
+    }
+
+    /**
+     * 设置默认值
+     * @param array $default
+     */
+    public function setDefault(array $default = []): void
+    {
+        foreach ($this->default as $item) {
+            array_key_exists($item, $this->request) || call_user_func_array([__CLASS__, 'set' . Str::studly($item)], []);
+        }
+        $this->default = $default;
     }
 
     /**
@@ -161,8 +178,8 @@ class Base
 
         //签名步骤二：在string后加入KEY
         $string = $string . "&key=" . $this->config['key'];
-        //签名步骤三：md5加密
-        $string = $this->signType == 'md5' ? md5($string) : hash_hmac('sha256', $string, $this->config['key']);
+        //签名步骤三：md5 || sha256 加密
+        $string = $this->getSignType() == 'md5' ? md5($string) : hash_hmac('sha256', $string, $this->config['key']);
         //签名步骤四：所有字符转为大写
         $sign       = strtoupper($string);
         $this->sign = $sign;
@@ -199,22 +216,10 @@ class Base
      * @param string $notifyUrl
      * @return $this
      */
-    public function setNotifyUrl(string $notifyUrl = ''): self
+    public function setNotifyUrl(string $notifyUrl = '')
     {
-        $this->notifyUrl = $notifyUrl ?: $this->request['notify_url'];
+        $this->notifyUrl = $notifyUrl ?: $this->config['notify_url'];
         $this->setRequest(['notify_url' => $this->notifyUrl]);
-        return $this;
-    }
-
-    /**
-     * 设置交易类型
-     * @param string $tradeType
-     * @return $this
-     */
-    public function setTradeType(string $tradeType): self
-    {
-        $this->tradeType = $tradeType;
-        $this->setRequest(['trade_type' => $tradeType]);
         return $this;
     }
 
@@ -238,15 +243,58 @@ class Base
 
     /**
      * 获取最终请求参数
-     * @return array
+     * @param bool|int $xml 返回数据类型 默认数组，可传true返回xml格式
+     * @return array|string
      * @throws
      */
-    public function getRequest(): array
+    public function getRequest($xml = false)
     {
-        return $this->request;
+        $this->setSign();
+
+        foreach ($this->getMustParams() as $index => $mustParam) {
+            if (strpos($mustParam, '|')) {
+                $param = array_flip(explode('|', $mustParam));
+                if (!array_intersect_key($this->request, $param)) {
+                    throw new Exception('缺少必要参数' . $mustParam);
+                };
+            } elseif (!array_key_exists($mustParam, $this->request)) {
+                throw new Exception('缺少必要参数' . $mustParam);
+            }
+        }
+        return $xml ? $this->toXml($this->request) : $this->request;
     }
 
+    /**
+     * 数组转换为xml格式
+     * @param array $data
+     * @param bool|int $cdata
+     * @return mixed
+     * @throws
+     */
+    public function toXml(array $data, bool $cdata = false)
+    {
+        if (!is_array($data) || count($data) <= 0) {
+            throw new Exception('数组数据异常！');
+        }
 
+        $xml = "<xml>";
+        foreach ($data as $key => $val) {
+            if (!is_numeric($val) or $cdata) {
+                $xml .= "<" . $key . "><![CDATA[" . $val . "]]></" . $key . ">";
+            } else {
+                $xml .= "<" . $key . ">" . $val . "</" . $key . ">";
+            }
+        }
+        $xml .= "</xml>";
+        return $xml;
+    }
+
+    /**
+     * 发起CurlPost请求
+     * @param
+     * @return mixed
+     * @throws
+     */
     public function post($url, $rawData, $useCert = true)
     {
         $ch = curl_init();

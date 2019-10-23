@@ -7,6 +7,7 @@ namespace flyits\wechat\pay;
 use flyits\wechat\Url;
 use think\Exception;
 use think\facade\Request;
+use think\helper\Str;
 
 class UnifiedOrder extends Base
 {
@@ -130,7 +131,7 @@ class UnifiedOrder extends Base
     {
         parent::__construct();
         $this->setLimit(['appid', 'mch_id', 'device_info', 'nonce_str', 'sign', 'sign_type', 'body', 'detail', 'attach', 'out_trade_no', 'fee_type', 'total_fee', 'spbill_create_ip', 'time_start', 'time_expire', 'goods_tag', 'notify_url', 'trade_type', 'product_id', 'limit_pay', 'openid', 'receipt', 'scene_info']);
-
+        $this->setDefault(['nonce_str', 'notify_url', 'spbill_create_ip', 'time_start', 'time_expire']);
         //判断是否是手机用户
         if (Request::isMobile()) {
             $agent = $_SERVER['HTTP_USER_AGENT'];
@@ -149,6 +150,7 @@ class UnifiedOrder extends Base
             $this->setTradeType('NATIVE');
         }
         $this->setMustParams();
+        $this->setRequest($this->config);
         return $this;
     }
 
@@ -255,7 +257,7 @@ class UnifiedOrder extends Base
      */
     public function setTimeExpire(string $timeExpire = ''): self
     {
-        $this->timeExpire = $timeExpire ?: date('YmdHis', Request::time() + $this->request['expire']);
+        $this->timeExpire = $timeExpire ?: date('YmdHis', Request::time() + $this->config['expire']);
         $this->setRequest(['time_expire' => $this->timeExpire]);
         return $this;
     }
@@ -269,6 +271,23 @@ class UnifiedOrder extends Base
     {
         $this->goodsTag = $goodsTag;
         $this->setRequest(['goods_tag' => $this->goodsTag]);
+        return $this;
+    }
+
+    /**
+     * 设置交易类型
+     * @param string $tradeType
+     * @return $this
+     * @throws \Exception
+     */
+    public function setTradeType(string $tradeType): self
+    {
+        $limit = ['JSAPI', 'NATIVE', 'APP', 'MWEB'];
+        if (!in_array($tradeType, $limit)) {
+            throw new Exception('非法的交易类型,该值必须是' . implode(',', $limit) . '之一');
+        }
+        $this->tradeType = $tradeType;
+        $this->setRequest(['trade_type' => $tradeType]);
         return $this;
     }
 
@@ -338,25 +357,6 @@ class UnifiedOrder extends Base
     }
 
     /**
-     * 获取最终请求参数
-     * @return array
-     * @throws
-     */
-    public function getRequest(): array
-    {
-        array_key_exists('notify_url', $this->request) || $this->setNotifyUrl();
-        array_key_exists('spbill_create_ip', $this->request) || $this->setSpbillCreateIp();
-        array_key_exists('time_start', $this->request) || $this->setTimeStart();
-        array_key_exists('time_expire', $this->request) || $this->setTimeExpire();
-        foreach ($this->getMustParams() as $index => $mustParam) {
-            if (!array_key_exists($mustParam, $this->request)) {
-                throw new Exception(['msg' => '缺少必要参数' . $mustParam]);
-            }
-        }
-        return $this->request;
-    }
-
-    /**
      * 设置请求参数中必要参数
      * @param array
      * @return $this
@@ -390,6 +390,6 @@ class UnifiedOrder extends Base
     public function unifiedOrder()
     {
         $url = Url::UNIFIED_ORDER;
-        $this->post($url, $this->getRequest());
+        return $this->post($url, $this->toXml($this->getRequest()));
     }
 }

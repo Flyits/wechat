@@ -11,6 +11,7 @@ namespace flyits\wechat;
 
 use flyits\tool\Curl;
 use think\Exception;
+use flyits\wechat\facade\Token;
 use think\facade\Config;
 
 class User
@@ -213,7 +214,7 @@ class User
      */
     public function login(string $redirectUrl, string $state, string $scope = 'snsapi_base')
     {
-        if (!preg_match('[0-9A-Za-z]{0,120}', $state))
+        if (!preg_match('/^[0-9A-Za-z]{0,120}/', $state))
             throw new Exception('state参数只能是a-zA-Z0-9的参数值，最大长度128');
         $redirectUrl = strpos($redirectUrl, '//') ? urlencode($redirectUrl) : $redirectUrl;
         $url         = sprintf(Url::USER_AUTH, Config::get('wechat.app_id'), $redirectUrl, $scope, $state);

@@ -89,4 +89,20 @@ class Url
     // todo 微信支付接口
     // 统一下单
     const UNIFIED_ORDER = 'https://api.mch.weixin.qq.com/pay/unifiedorder';
+    // 查询订单
+    const ORDER_QUERY = 'https://api.mch.weixin.qq.com/pay/orderquery';
+    // 关闭订单
+    const CLOSE_ORDER = 'https://api.mch.weixin.qq.com/pay/closeorder';
+    // 申请退款
+    const REFUND = 'https://api.mch.weixin.qq.com/secapi/pay/refund';
+    // 查询退款
+    const REFUND_QUERY = 'https://api.mch.weixin.qq.com/pay/refundquery';
+    // 下载对账单
+    const DOWNLOAD_BILL = 'https://api.mch.weixin.qq.com/pay/downloadbill';
+    // 下载资金账单
+    const DOWNLOAD_FUNDFLOW = 'https://api.mch.weixin.qq.com/pay/downloadfundflow';
+    // 交易保障
+    const PAYITIL = 'https://api.mch.weixin.qq.com/payitil/report';
+    // 拉取订单评价数据
+    const BATCH_QUERY_COMMENT = 'https://api.mch.weixin.qq.com/billcommentsp/batchquerycomment';
 }
