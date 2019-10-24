@@ -92,7 +92,7 @@ class Base
      */
     public function setConfig(array $config): self
     {
-        $setup = ['appid', 'mch_id', 'sign_type', 'key', 'notify_url', 'expire'];
+        $setup = ['appid', 'mch_id', 'sign_type', 'key', 'notify_url', 'expire', 'sslCertPath', 'sslKeyPath'];
         foreach ($config as $index => $item) {
             if (in_array($index, $setup)) {
                 $this->config[$index] = $item;
@@ -104,13 +104,15 @@ class Base
     /**
      * 设置默认值
      * @param array $default
+     * @param  $class
      */
-    public function setDefault(array $default = []): void
+    public function setDefault(array $default = [], $class = null): void
     {
-        foreach ($this->default as $item) {
-            array_key_exists($item, $this->request) || call_user_func_array([__CLASS__, 'set' . Str::studly($item)], []);
-        }
         $this->default = $default;
+
+        foreach ($this->default as $item) {
+            array_key_exists($item, $this->request) || call_user_func_array([$class, __CLASS__, 'set' . Str::studly($item)], []);
+        }
     }
 
     /**
@@ -308,7 +310,9 @@ class Base
 
     /**
      * 发起CurlPost请求
-     * @param
+     * @param $url
+     * @param $rawData
+     * @param $useCert
      * @return mixed
      * @throws
      */
@@ -322,7 +326,7 @@ class Base
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $rawData);
-        if ($useCert == true) {
+        if ($useCert == true && $this->config['sslCertPath']) {
             curl_setopt($ch, CURLOPT_SSLCERTTYPE, 'PEM');
             curl_setopt($ch, CURLOPT_SSLCERT, $this->config['sslCertPath']);
             curl_setopt($ch, CURLOPT_SSLKEYTYPE, 'PEM');

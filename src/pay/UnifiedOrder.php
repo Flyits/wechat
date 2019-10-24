@@ -131,7 +131,7 @@ class UnifiedOrder extends Base
     {
         parent::__construct();
         $this->setLimit(['appid', 'mch_id', 'device_info', 'nonce_str', 'sign', 'sign_type', 'body', 'detail', 'attach', 'out_trade_no', 'fee_type', 'total_fee', 'spbill_create_ip', 'time_start', 'time_expire', 'goods_tag', 'notify_url', 'trade_type', 'product_id', 'limit_pay', 'openid', 'receipt', 'scene_info']);
-        $this->setDefault(['nonce_str', 'notify_url', 'spbill_create_ip', 'time_start', 'time_expire']);
+
         //判断是否是手机用户
         if (Request::isMobile()) {
             $agent = $_SERVER['HTTP_USER_AGENT'];
@@ -151,6 +151,7 @@ class UnifiedOrder extends Base
         }
         $this->setMustParams();
         $this->setRequest($this->config);
+        $this->setDefault(['nonce_str', 'notify_url', 'spbill_create_ip', 'time_start', 'time_expire'],$this);
         return $this;
     }
 
