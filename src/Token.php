@@ -80,15 +80,16 @@ class Token
     protected function generate()
     {
         if (Cache::has('wechat_token')) {
-            $this->token  = Cache::get('wechat_token');
+            $this->token      = Cache::get('wechat_token');
             $this->expireTime = Cache::get('wechat_token_expire');
         } else {
             $response = Curl::get(sprintf(Url::TOKEN, $this->appId, $this->appSecret));
             $response = json_decode($response, true);
             if (array_key_exists('access_token', $response)) {
-                $this->token  = $response['access_token'];
+                $this->token      = $response['access_token'];
                 $this->expireTime = $_SERVER['REQUEST_TIME'] + $response['expires_in'] - 10;
-                Cache::set('wechat_token', $this->token, $this->expireTime);
+                Cache::set('wechat_token', $this->token, $response['expires_in'] - 10);
+                Cache::set('wechat_token_expire', $this->expireTime);
             } else {
                 $this->setErr($response);
             }
