@@ -4,7 +4,9 @@
 namespace flyits\wechat\pay;
 
 
-class Notify extends Base
+use flyits\wechat\interfac\ResultNotify;
+
+class Notify extends Base implements ResultNotify
 {
 
     public function __construct()
@@ -27,11 +29,12 @@ class Notify extends Base
         } else {
             $this->notify($notify);
         }
-        $resultInfo = [
-            'return_code' => 'SUCCESS',
-            'return_msg'  => 'OK',
-        ];
-        return $this->toXml($resultInfo);
+        $resultInfo = '<xml>
+                         <return_code><![CDATA[SUCCESS]]></return_code>
+                         <return_msg><![CDATA[OK]]></return_msg>
+                       </xml>';
+        ob_end_clean();
+        return $resultInfo;
     }
 
     /**
