@@ -8,11 +8,32 @@ use flyits\wechat\interfac\ResultNotify;
 
 class Notify extends Base implements ResultNotify
 {
+    /**
+     * 缓冲区清除
+     * @var
+     */
+    protected $obClean = true;
 
     public function __construct()
     {
         parent::__construct();
         return $this->init();
+    }
+
+    /**
+     * @param mixed $obClean
+     */
+    public function setObClean($obClean): void
+    {
+        $this->obClean = $obClean;
+    }
+
+    /**
+     * @return mixed
+     */
+    private function getObClean()
+    {
+        return $this->obClean;
     }
 
     /**
@@ -33,8 +54,8 @@ class Notify extends Base implements ResultNotify
                          <return_code><![CDATA[SUCCESS]]></return_code>
                          <return_msg><![CDATA[OK]]></return_msg>
                        </xml>';
-        ob_end_clean();
-        return $resultInfo;
+        $this->getObClean() && ob_end_clean();
+        echo $resultInfo;
     }
 
     /**
