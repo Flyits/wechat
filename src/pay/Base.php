@@ -265,6 +265,23 @@ class Base
     }
 
     /**
+     * 发送请求
+     * @param string $url
+     * @param bool $assoc
+     * @param bool $xml
+     * @return mixed
+     * @throws
+     */
+    public function send(string $url, $assoc = true, $xml = true)
+    {
+        $result = $this->post($url, $xml ? $this->toXml($this->getRequest()) : $this->getRequest());
+
+        $obj  = simplexml_load_string($result, 'SimpleXMLElement', LIBXML_NOCDATA);
+        $data = json_decode(json_encode($obj), $assoc);
+        return $data;
+    }
+
+    /**
      * 数组转换为xml格式
      * @param array $data
      * @param bool|int $cdata

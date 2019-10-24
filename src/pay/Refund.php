@@ -150,23 +150,25 @@ class Refund extends Base
 
     /**
      * 发送退款请求
+     * @param bool $assoc
      * @return mixed
      * @throws
      */
-    public function send()
+    public function refund(bool $assoc = true)
     {
-        return $this->post(Url::REFUND, $this->toXml($this->getRequest()));
+        return $this->send(Url::REFUND, $assoc);
     }
 
     /**
      * 查询退款订单
+     * @param bool $assoc
      * @return mixed
      * @throws
      */
-    public function query()
+    public function query(bool $assoc = true)
     {
         $this->setMustParams(['appid', 'mch_id', 'nonce_str', 'sign', 'transaction_id|out_trade_no|out_refund_no|refund_id']);
-        return $this->post(Url::REFUND_QUERY, $this->toXml($this->getRequest()));
+        return $this->send(Url::REFUND_QUERY, $assoc);
     }
 
 

@@ -383,13 +383,12 @@ class UnifiedOrder extends Base
 
     /**
      * 请求微信支付统一下单接口
-     * @param
+     * @param bool $assoc
      * @return mixed
      * @throws
      */
-    public function unifiedOrder()
+    public function unifiedOrder(bool $assoc = true)
     {
-        $url = Url::UNIFIED_ORDER;
-        return $this->post($url, $this->toXml($this->getRequest()));
+        return $this->send(Url::UNIFIED_ORDER, $assoc);
     }
 }

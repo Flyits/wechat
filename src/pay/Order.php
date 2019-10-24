@@ -38,25 +38,24 @@ class Order extends Base
 
     /**
      * 执行查询
-     * @param
+     * @param bool $assoc
      * @return mixed
      * @throws
      */
-    public function query()
+    public function query(bool $assoc = true)
     {
-        $url = Url::ORDER_QUERY;
-        return $this->post($url, $this->toXml($this->getRequest()));
+        return $this->send(Url::ORDER_QUERY, $assoc);
     }
 
     /**
      * 关闭订单
-     * @param
+     * @param bool $assoc
      * @return mixed
      * @throws
      */
-    public function close()
+    public function close(bool $assoc = true)
     {
         $this->setMustParams(['appid', 'mch_id', 'out_trade_no', 'nonce_str', 'sign']);
-        return $this->post(Url::CLOSE_ORDER, $this->toXml($this->getRequest()));
+        return $this->send(Url::CLOSE_ORDER, $assoc);
     }
 }
