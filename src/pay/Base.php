@@ -111,7 +111,7 @@ class Base
         $this->default = $default;
 
         foreach ($this->default as $item) {
-            array_key_exists($item, $this->request) || call_user_func_array([$class, __CLASS__, 'set' . Str::studly($item)], []);
+            array_key_exists($item, $this->request) || call_user_func_array([$class ?? __CLASS__, 'set' . Str::studly($item)], []);
         }
     }
 
