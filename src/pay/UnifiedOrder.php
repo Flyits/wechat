@@ -151,7 +151,7 @@ class UnifiedOrder extends Base
         }
         $this->setMustParams();
         $this->setRequest($this->config);
-        $this->setDefault(['nonce_str', 'notify_url', 'spbill_create_ip', 'time_start', 'time_expire'],$this);
+        $this->setDefault(['nonce_str', 'notify_url', 'spbill_create_ip', 'time_start', 'time_expire'], $this);
         return $this;
     }
 
@@ -383,6 +383,25 @@ class UnifiedOrder extends Base
     }
 
     /**
+     * 生成前端JSPAI调用支付参数
+     * @param string $prepay_id = ''
+     * @return mixed
+     * @throws
+     */
+    public function jsApi(string $prepay_id = '')
+    {
+        $data            = [
+            'appId'     => $this->config['appid'],
+            'timeStamp' => Request::time(),
+            'nonceStr'  => Str::random(32),
+            'package'   => 'prepay_id=' . $prepay_id,
+            'signType'  => $this->getSignType(),
+        ];
+        $data['paySign'] = $this->sign($data);
+        return $data;
+    }
+
+    /**
      * 请求微信支付统一下单接口
      * @param bool $assoc
      * @return mixed
@@ -390,6 +409,8 @@ class UnifiedOrder extends Base
      */
     public function unifiedOrder(bool $assoc = true)
     {
-        return $this->send(Url::UNIFIED_ORDER, $assoc);
+        $data = $this->send(Url::UNIFIED_ORDER, $assoc);
+
+        return $this->tradeType == 'JSAPI' ? $this->jsApi($data['prepay_id']) : $data;
     }
 }
