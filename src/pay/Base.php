@@ -167,26 +167,25 @@ class Base
      */
     public function setSign(): self
     {
-        //签名步骤一：按字典序排序参数
-        ksort($this->request);
-
-        $string = '';
-        foreach ($this->request as $k => $v) {
-            if ($k != "sign" && $v != "" && !is_array($v)) {
-                $string .= $k . "=" . $v . "&";
-            }
-        }
-        $string = trim($string, "&");
-
-        //签名步骤二：在string后加入KEY
-        $string = $string . "&key=" . $this->config['key'];
-        //签名步骤三：md5 || sha256 加密
-        $string = $this->getSignType() == 'md5' ? md5($string) : hash_hmac('sha256', $string, $this->config['key']);
-        //签名步骤四：所有字符转为大写
-        $sign       = strtoupper($string);
-        $this->sign = $sign;
+        $this->sign = $this->sign($this->request);
         $this->setRequest(['sign' => $this->sign]);
         return $this;
+    }
+
+    /**
+     * 检测微信返回数据
+     * @param array $data
+     * @return mixed
+     * @throws
+     */
+    public function returnCheck(array $data)
+    {
+        $sign = $this->sign($data);
+        if ($sign === $data['sign']) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -280,6 +279,10 @@ class Base
 
         $obj  = simplexml_load_string($result, 'SimpleXMLElement', LIBXML_NOCDATA);
         $data = json_decode(json_encode($obj), $assoc);
+
+        if (!$this->returnCheck($data))
+            throw new Exception('非法的数据,请检测数据来源！');
+
         return $data;
     }
 
@@ -306,6 +309,34 @@ class Base
         }
         $xml .= "</xml>";
         return $xml;
+    }
+
+    /**
+     * 签名
+     * @param array $data
+     * @return  string
+     * @throws
+     */
+    final protected function sign(array $data)
+    {
+        //签名步骤一：按字典序排序参数
+        ksort($data);
+
+        $string = '';
+        foreach ($data as $k => $v) {
+            if ($k != "sign" && $v != "" && !is_array($v)) {
+                $string .= $k . "=" . $v . "&";
+            }
+        }
+        $string = trim($string, "&");
+
+        //签名步骤二：在string后加入KEY
+        $string = $string . "&key=" . $this->config['key'];
+        //签名步骤三：md5 || sha256 加密
+        $string = $this->getSignType() == 'MD5' ? md5($string) : hash_hmac('sha256', $string, $this->config['key']);
+        //签名步骤四：所有字符转为大写
+        $sign = strtoupper($string);
+        return $sign;
     }
 
     /**
