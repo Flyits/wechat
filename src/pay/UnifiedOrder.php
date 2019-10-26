@@ -419,7 +419,9 @@ class UnifiedOrder extends Base
     public function unifiedOrder(bool $assoc = true)
     {
         $data = $this->send(Url::UNIFIED_ORDER, $assoc);
-
-        return $this->tradeType == 'JSAPI' ? $this->jsApi($data['prepay_id']) : $data;
+        if ($this->getTradeType() == 'JSAPI' && array_key_exists('prepay_id', $data)) {
+            return $this->jsApi($data['prepay_id']);
+        }
+        return $data;
     }
 }
