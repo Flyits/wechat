@@ -368,7 +368,7 @@ class UnifiedOrder extends Base
         $jsApi  = ['openid'];
         $native = [];
         $mweb   = ['scene_info'];
-        switch ($this->tradeType) {
+        switch ($this->getTradeType()) {
             case'JSAPI':
                 $this->mustParams = array_merge($pub, $jsApi);
                 break;
@@ -380,6 +380,15 @@ class UnifiedOrder extends Base
                 $this->mustParams = array_merge($pub, $mweb);
         }
         return $this;
+    }
+
+    /**
+     * 获取当前支付方式
+     * @return string
+     */
+    public function getTradeType(): string
+    {
+        return $this->tradeType;
     }
 
     /**
