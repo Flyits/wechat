@@ -18,10 +18,10 @@ class Order extends Base
 
     public function __construct()
     {
-        parent::__construct();
         $this->setLimit(['appid', 'mch_id', 'transaction_id', 'out_trade_no', 'nonce_str', 'sign', 'sign_type']);
         $this->setMustParams(['appid', 'mch_id', 'transaction_id|out_trade_no', 'nonce_str', 'sign', 'sign_type']);
         $this->setDefault(['nonce_str']);
+        parent::__construct();
     }
 
     /**

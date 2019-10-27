@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="8bc09b68-7864-4e5d-9406-d7678a4e52c4" name="默认" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pay/Base.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/pay/Base.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pay/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/pay/Order.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +45,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/pay" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
@@ -84,11 +86,25 @@
       <workItem from="1571878024305" duration="25000" />
       <workItem from="1571880917922" duration="8361000" />
       <workItem from="1571963603437" duration="1798000" />
-      <workItem from="1572050228944" duration="4746000" />
+      <workItem from="1572050228944" duration="7674000" />
+      <workItem from="1572077222607" duration="1771000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

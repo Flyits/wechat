@@ -82,6 +82,7 @@ class Base
     public function __construct()
     {
         $this->setConfig(Config::get('wechat.pay'));
+        $this->setRequest($this->config);
         return $this;
     }
 
@@ -181,7 +182,9 @@ class Base
     public function returnCheck(array $data)
     {
         $sign = $this->sign($data);
-        if ($sign === $data['sign']) {
+        if ($data['return_code'] !== 'SUCCESS' || $data['return_msg'] !== 'OK')
+            return true;
+        if (array_key_exists('sign', $data) && $sign === $data['sign']) {
             return true;
         } else {
             return false;

@@ -129,7 +129,6 @@ class UnifiedOrder extends Base
      */
     public function __construct()
     {
-        parent::__construct();
         $this->setLimit(['appid', 'mch_id', 'device_info', 'nonce_str', 'sign', 'sign_type', 'body', 'detail', 'attach', 'out_trade_no', 'fee_type', 'total_fee', 'spbill_create_ip', 'time_start', 'time_expire', 'goods_tag', 'notify_url', 'trade_type', 'product_id', 'limit_pay', 'openid', 'receipt', 'scene_info']);
 
         //判断是否是手机用户
@@ -150,8 +149,9 @@ class UnifiedOrder extends Base
             $this->setTradeType('NATIVE');
         }
         $this->setMustParams();
-        $this->setRequest($this->config);
+
         $this->setDefault(['nonce_str', 'notify_url', 'spbill_create_ip', 'time_start', 'time_expire'], $this);
+        parent::__construct();
         return $this;
     }
 
