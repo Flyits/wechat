@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8bc09b68-7864-4e5d-9406-d7678a4e52c4" name="默认" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pay/Base.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/pay/Base.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pay/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/pay/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,18 +27,18 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
-      <path value="$PROJECT_DIR$/vendor/psr/log" />
-      <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/flyits/tools" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/psr/container" />
       <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
-      <path value="$PROJECT_DIR$/vendor/opis/closure" />
-      <path value="$PROJECT_DIR$/vendor/flyits/tools" />
-      <path value="$PROJECT_DIR$/vendor/league/flysystem" />
-      <path value="$PROJECT_DIR$/vendor/league/flysystem-cached-adapter" />
-      <path value="$PROJECT_DIR$/vendor/composer" />
-      <path value="$PROJECT_DIR$/vendor/topthink/framework" />
-      <path value="$PROJECT_DIR$/vendor/topthink/think-orm" />
       <path value="$PROJECT_DIR$/vendor/topthink/think-helper" />
+      <path value="$PROJECT_DIR$/vendor/opis/closure" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/vendor/topthink/think-orm" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/league/flysystem-cached-adapter" />
+      <path value="$PROJECT_DIR$/vendor/topthink/framework" />
     </include_path>
   </component>
   <component name="ProjectId" id="1S2Y2n61tqoNaeRBQcnD8OOXyHV" />
@@ -45,7 +46,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="E:/www/php/wechat" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
@@ -88,6 +89,10 @@
       <workItem from="1571963603437" duration="1798000" />
       <workItem from="1572050228944" duration="7674000" />
       <workItem from="1572077222607" duration="1771000" />
+      <workItem from="1572137429529" duration="1268000" />
+      <workItem from="1572142738653" duration="2063000" />
+      <workItem from="1572222596467" duration="1828000" />
+      <workItem from="1572309289821" duration="3321000" />
     </task>
     <servers />
   </component>
