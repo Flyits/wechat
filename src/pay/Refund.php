@@ -54,9 +54,9 @@ class Refund extends Base
     public function __construct()
     {
         $this->setLimit(['appid', 'mch_id', 'nonce_str', 'sign', 'sign_type', 'transaction_id', 'out_trade_no', 'out_refund_no', 'total_fee', 'refund_fee', 'refund_fee_type', 'refund_desc', 'refund_account', 'notify_url', 'refund_id', 'offset']);
-        $this->setDefault(['nonce_str', 'notify_url']);
         $this->setMustParams(['appid', 'mch_id', 'transaction_id|out_trade_no', 'nonce_str', 'sign', 'sign_type', 'out_refund_no', 'total_fee', 'refund_fee']);
         parent::__construct();
+        $this->setDefault(['nonce_str', 'notify_url']);
     }
 
     /**

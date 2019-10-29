@@ -150,8 +150,8 @@ class UnifiedOrder extends Base
         }
         $this->setMustParams();
 
-        $this->setDefault(['nonce_str', 'notify_url', 'spbill_create_ip', 'time_start', 'time_expire'], $this);
         parent::__construct();
+        $this->setDefault(['nonce_str', 'notify_url', 'spbill_create_ip', 'time_start', 'time_expire'], $this);
         return $this;
     }
 
