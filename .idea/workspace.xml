@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="8bc09b68-7864-4e5d-9406-d7678a4e52c4" name="默认" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +44,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="E:/www/php/wechat" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="editing.templates" />
   </component>
   <component name="RecentsManager">
@@ -89,7 +90,11 @@
       <workItem from="1572137429529" duration="1268000" />
       <workItem from="1572142738653" duration="2063000" />
       <workItem from="1572222596467" duration="1828000" />
-      <workItem from="1572309289821" duration="4204000" />
+      <workItem from="1572309289821" duration="5273000" />
+      <workItem from="1572395243805" duration="1201000" />
+      <workItem from="1572482871610" duration="641000" />
+      <workItem from="1574227284832" duration="742000" />
+      <workItem from="1574383362207" duration="698000" />
     </task>
     <servers />
   </component>
